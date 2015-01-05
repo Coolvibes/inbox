@@ -17,10 +17,19 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  #s.test_files = Dir["test/**/*"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.1.8"
   s.add_dependency "will_paginate"
+  s.add_dependency "mysql2"
+  s.add_dependency "faker"
+  s.add_dependency "paperclip"
+
+
+  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'capybara'
+  s.add_development_dependency 'factory_girl_rails'
 
   s.add_development_dependency "sqlite3"
 end

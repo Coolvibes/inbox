@@ -1,2 +1,14 @@
-<h1>Inbox#show_msg</h1>
-<p>Find me in app/views/inbox/inbox/show_msg.html.erb</p>
+<h2>Your Message</h2>
+
+<div style="border:2px solid #a1a1a1;
+        margin-top:20px;
+        font-size:15px;
+        padding:10px 40px;
+        background:#dddddd;
+        width:400px;
+        border-radius:25px;">
+
+  <p><%= @email.message %></p>
+</div>
+
+<%= link_to "Back", :back %>

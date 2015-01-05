@@ -6,17 +6,33 @@
 <table style="width:100%">
   <tr>
     <th>Sender</th>
+    <th>Receiver</th>
     <th>Subject</th>
     <th>Message</th>
     <th>Time</th>
   </tr>
 
   <% @emails.each do |e| %>
+  <% @e=e %>
       <tr>
             <td><%= e.sender %></td>
+            <td><%= e.receivers.map(&:receiver_email).join(', ') %></td>
             <td><%= e.subject %></td>
-            <td>message</td>
-            <td><%=e.created_at %></td>
+            <td><%= link_to show_mess(@e), inbox_show_msg_path(:id=> e.id,:read=> 'true') %>
+            <div style="background: lightcoral;align-content: center;width: 100px;text-align: center;
+                      display: inline;border-radius: 6px;float: right;">
+                <% if show_inbox(@e) == true%>
+                    Not Read
+                <% else %>
+                    Read
+                <% end %></td>
+            <td>
+              <% if show_time(@e) %>
+                  <%= e.created_at.to_s(:short)%>
+              <% else %>
+                  <%= time_ago_in_words(e.created_at)+" ago"%>
+              <%end %>
+            </td>
       </tr>
    <% end %>
 
