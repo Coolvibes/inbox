@@ -3,13 +3,9 @@ module Inbox
 
   def show_inbox (e)
    
-   if e.receivers.map(&:is_read).first == true
-     return true
-   else
-     return false
-   end
+   e.receivers.where(:receiver_email=>current_user.email).first.is_read
 
- end
+  end
 	
 
   def show_time(e)
